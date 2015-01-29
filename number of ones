@@ -1,0 +1,14 @@
+
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+    
+        var x = +line;
+        x = x.toString(2).match(/1/g);
+        if(x != null)
+        console.log(x.length);
+        else
+        console.log(0);
+    }
+});
