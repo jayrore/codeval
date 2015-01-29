@@ -1,0 +1,28 @@
+String.prototype.removeChars = function(){
+    var s0 = this.split(',')[0];
+    var s1= this.split(',')[1].trim().split("");
+    
+    while(s1.length){
+        s0 = s0.remove(s1.shift());
+    }
+
+    return s0;    
+};
+
+String.prototype.remove= function(del){
+    var s = this.split(""),x="";
+    while(s.length){
+        var y = s.shift();
+        if( y !== del)
+            x += y
+    }
+    
+    return x;
+}
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        console.log(line.removeChars());
+    }
+});
