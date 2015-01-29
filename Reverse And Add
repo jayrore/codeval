@@ -1,0 +1,35 @@
+String.prototype.reverseSum = function(){
+     var y = +this;
+    return  y.reverse() + y;
+};
+
+Number.prototype.reverse= function(){
+    return +this.toString().split("").reverse().join("");
+};
+
+Number.prototype.isPalindrome= function(){
+    var x = this.reverse();
+    
+    return x==this;
+};
+
+var iterate = function (string){
+    var i=1;
+    while(true){
+        if(string.reverseSum().isPalindrome())
+            return i+" "+string.reverseSum();
+        
+        string = string.reverseSum().toString(); 
+        i++;
+    }
+};
+
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+   
+    if (line != "") {
+     
+            console.log(iterate(line));
+    
+    }
+});
