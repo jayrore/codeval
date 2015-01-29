@@ -1,0 +1,24 @@
+String.prototype.isRotation= function(r){
+    var c,re = r.split("");
+    for(var i=0 ; i<this.length; i++){
+        c = re.shift();
+        re.push(c);
+        if(this == re.join(""))
+        return true;
+    }
+    
+    return false;
+};
+
+var fs  = require("fs"),s,r;
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        s = line.split(",")[0];
+        r = line.split(",")[1];
+        if(s.isRotation(r))
+        console.log("True");
+        else
+        console.log("False");
+    }
+});
