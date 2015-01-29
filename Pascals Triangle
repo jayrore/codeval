@@ -1,0 +1,26 @@
+var pascal = function(level){
+    var pascal = [],
+        pascaltext="";   
+    for(var i = 1; i<= level; i++)
+    {   pascal[i]=[];
+        for(var j = 1; j <=i; j++ )
+        {
+            if(j===1 || j===i)
+            {
+                 pascal[i].push(1);
+            }else{
+               pascal[i].push(pascal[i-1][j-2]+pascal[i-1][j-1]);
+            }         
+        }
+        pascaltext += " "+pascal[i].join(" ");
+    }
+    return pascaltext.trim();
+};
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        console.log(pascal(line));
+        //console.log(answer_line);
+    }
+});
