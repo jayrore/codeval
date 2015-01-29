@@ -1,0 +1,19 @@
+String.prototype.charFromEnd = function(){
+    var x = this.trim().split(" "),
+        y = +x.pop();
+       if(x.length < y)
+         return false;
+
+   return x[x.length - y];
+    
+};
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        var x = line.charFromEnd();
+        if(x){
+            console.log(x);
+        }
+    }
+});
