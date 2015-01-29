@@ -1,0 +1,20 @@
+String.prototype.firstOdd = function (){
+    var l = this.length,
+        i = 0,
+        x= this.split("");
+    while(i<=l){
+        if(x.indexOf(this.charAt(i)) === x.lastIndexOf(this.charAt(i))){
+            return this[i];
+        }
+        i++;    
+    }
+    return null;
+};
+
+
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line !== "") {
+       console.log(line.firstOdd());
+    }
+});
