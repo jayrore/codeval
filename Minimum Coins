@@ -1,0 +1,17 @@
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        var coins = [1,3,5],
+        money = +line,
+        q=0,
+        val = 2;
+        do{
+            if(coins[val] <= money){
+            q++; money -= coins[val];
+            }
+            else
+            val--;
+        }while(money)
+        console.log(q);
+    }
+});
