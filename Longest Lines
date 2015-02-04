@@ -1,0 +1,36 @@
+function setStock(arr,stock)
+{
+    for (var i = 0; i < stock; i++) {
+        arr.push("");
+    }
+}
+var sorte = function(a, b)
+{
+    return a.length < b.length;
+}
+
+var fs  = require("fs"),mg=[],fl=true,stock;
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") 
+    {
+        if(fl)
+        {
+          setStock(mg, +line);
+          fl =false;
+        }
+        for(var i=0; i < mg.length; i++)
+        {
+          if(mg[i].length < line.length )
+          {
+              mg.pop();
+              mg.push(line);
+              mg.sort(sorte);
+              i = mg.length;
+          }    
+        }
+  }
+});
+
+for (var i = 0; i < mg.length; i++) {
+    console.log(mg[i]);
+}
