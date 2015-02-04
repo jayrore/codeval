@@ -1,0 +1,19 @@
+String.prototype.separate = function(){
+    var x = this.split(" "), y, c=[];
+    
+    for(var i=0; i< x.length; i++)
+    {
+        y = x[i].split("");
+        y[0] = y[0].toUpperCase();
+        c.push(y.join(""));
+    }
+  
+    return c.join(" ");
+}
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        console.log(line.separate());
+    }
+});
