@@ -1,0 +1,23 @@
+String.prototype.toReverse= function(){
+    var array = this.split(" ");
+    array = array.toReverse();
+    
+ return array.join(" ");
+};
+
+Array.prototype.toReverse= function(){
+    var n =[];
+    for (var i = this.length-1 ; 0 <= i; i--) {
+        if(this[i])
+        n.push( this[i] );
+    }
+    return n;
+};
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line !== "") {
+        //do something here
+        if(line)
+        console.log(line.toReverse());
+    }
+});
