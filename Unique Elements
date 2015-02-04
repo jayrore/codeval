@@ -1,0 +1,17 @@
+String.prototype.dR= function(){
+    var d =[],
+        x,
+        a = this.split(",");
+    while(a.length){
+        x = a.shift();
+        if( d.indexOf(x) === -1)d.push(x);
+    }  
+    return d.join();
+};
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        console.log(line.dR());
+    }
+});
