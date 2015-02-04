@@ -1,0 +1,16 @@
+Array.prototype.sumIds= function(){
+    var sum = 0;
+    for(var i=0; i< this.length; i++)
+        if(this[i] != undefined && this[i].id != undefined&& this[i].label != undefined)
+            sum += this[i].id;
+    return sum;
+};
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        line = JSON.parse(line);
+        if(line.menu.items !== undefined)
+        console.log(line.menu.items.sumIds());
+    }
+});
