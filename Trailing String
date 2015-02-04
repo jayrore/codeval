@@ -1,0 +1,17 @@
+String.prototype.isMatching= function(){
+    var s0 = this.split(',')[0];
+    var s1 = this.split(',')[1];
+        
+    s0 = s0.split(" ");
+    s0.shift();
+    s0 = s0.join(" ").trim();
+    //return s0.indexOf(s1);
+    return (s0.indexOf(s1)=== -1)?0:1;
+};
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        console.log(line.isMatching());
+    }
+});
