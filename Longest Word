@@ -1,0 +1,20 @@
+String.prototype.biggerWord=function(){
+    var s= this.split(" "),bigger="";
+    
+    for(var i= 0; i<s.length; i++)
+        if(s[i].length>bigger.length)
+            bigger = s[i]
+            
+    return bigger;
+};
+var fs  = require("fs");
+fs.readFileSync(process.argv[2]).toString().split('\n').forEach(function (line) {
+    if (line != "") {
+        //do something here
+        //console.log(answer_line);
+        if(line.split(" ").length>1)
+            console.log(line.biggerWord());
+        else
+            console.log(line);
+    }
+});
